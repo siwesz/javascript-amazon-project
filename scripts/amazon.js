@@ -9,6 +9,7 @@
 //instead of adding <script> in html or import/export, this js code can be used.
 
 import {cart} from '../data/cart.js';
+import {products} from '../data/products.js'
 
 let productsHTML = '';
 
