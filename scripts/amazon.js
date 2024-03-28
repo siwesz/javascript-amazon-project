@@ -5,6 +5,11 @@
 // *ten because image names are in tens
 // src="images/ratings/rating-${product.rating.stars * 10}.png">
 
+// const cart = [];
+//instead of adding <script> in html or import/export, this js code can be used.
+
+import {cart} from '../data/cart.js';
+
 let productsHTML = '';
 
 products.forEach((product) => {
