@@ -32,6 +32,7 @@ export function renderOrderSummary() {
 
     cartSummaryHTML += `
   <div class="cart-item-container 
+    js-cart-item-container
     js-cart-item-container-${matchingProduct.id}">
               <div class="delivery-date">
                 Delivery date: ${dateString}
@@ -48,7 +49,8 @@ export function renderOrderSummary() {
                   <div class="product-price">
                     $${formatCurrency(matchingProduct.priceCents)}
                   </div>
-                  <div class="product-quantity">
+                  <div class="product-quantity 
+                  js-product-quantity-${matchingProduct.id}">
                     <span>
                       Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                     </span>
@@ -56,7 +58,9 @@ export function renderOrderSummary() {
                       Update
                     </span>
                     <span class="delete-quantity-link link-primary 
-                    js-delete-link" data-product-id="${matchingProduct.id}">
+                    js-delete-link 
+                    js-delete-link-${matchingProduct.id}" 
+                    data-product-id="${matchingProduct.id}">
                       Delete
                     </span>
                   </div>
@@ -100,8 +104,7 @@ export function renderOrderSummary() {
               <input type="radio" 
               ${isChecked ? 'checked' : '' }
                 class="delivery-option-input"
-                name="delivery-option- ${deliveryOption.id}"
-                ">
+                name="delivery-option- ${deliveryOption.id}">
               <div>
                 <div class="delivery-option-date">
                   ${dateString}
@@ -113,15 +116,17 @@ export function renderOrderSummary() {
             </div>
 
       `
+      
 
     });
-
     return html;
 
   }
 
+
   document.querySelector('.js-order-summary')
-    .innerHTML = cartSummaryHTML;
+  .innerHTML = cartSummaryHTML;
+  
 
     document.querySelectorAll('.js-delete-link')
       .forEach((link) => {
@@ -142,7 +147,7 @@ export function renderOrderSummary() {
       .forEach((element) => {
         element.addEventListener('click', () => {
           const {productId, deliveryOptionId} = element.dataset;
-          updateDeliveryOption(productId, deliveryOptionId);
+          updateDeliveryOption(deliveryOptionId, productId);
           renderOrderSummary();
 
         });
