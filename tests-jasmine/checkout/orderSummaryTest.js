@@ -45,8 +45,7 @@ describe('test suite: renderOrderSummary', () => {
     ).toContain('Quantity: 1');
   });
 
-  document.querySelector('.js-test-container')
-  .innerHTML = '';
+  
 
   it('deletes a product', () => {
 
