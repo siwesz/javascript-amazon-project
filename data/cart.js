@@ -1,3 +1,4 @@
+import {renderPaymentSummary} from "../scripts/checkout/paymentSummary";
 
 
 export let cart;
@@ -61,6 +62,9 @@ export function removeFromCart(productId) {
     saveToStorage();
 }
 
+
+
+
 export function updateDeliveryOption(productId, deliveryOptionId) {
   let matchingItem;
 
@@ -73,4 +77,5 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
       matchingItem.deliveryOptionId = deliveryOptionId;
 
       saveToStorage();
+      
 }
